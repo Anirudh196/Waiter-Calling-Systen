@@ -10,8 +10,8 @@
 #define switchPin1 D4
 #define switchPin2 D6
 
-const char* ssid = "Anirudh";
-const char* password = "Lagoonnebula,1610";
+const char* ssid = "GARDEN";
+const char* password = "9842201111@gard";
 
 const char* mqtt_server = "d55860b1ebb94d229518a106cad61eb9.s1.eu.hivemq.cloud";
 const char* mqtt_username = "GardenRestaurant";
@@ -22,7 +22,7 @@ const char* messageSwitchPin1 = "o1"; //Change number
 const char* messageSwitchPin2 = "f1"; //Change number
 
 WiFiClientSecure espClient1; //Change number
-PubSubClient client(espClient1) //Change number
+PubSubClient client(espClient1); //Change number
 
 void setup_wifi() {
   delay(10);
@@ -74,9 +74,9 @@ void setup() {
   setup_wifi();
 
   #ifdef ESP8266
-    espClient.setInsecure();
+    espClient1.setInsecure();
   #else
-    espClient.setCACert(root_ca);      // enable this line and the the "certificate" code for secure connection
+    espClient1.setCACert(root_ca);      // enable this line and the the "certificate" code for secure connection
   #endif
 
   client.setServer(mqtt_server, mqtt_port);
