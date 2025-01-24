@@ -4,7 +4,6 @@
  #include <WiFi.h>
 #endif
 
-#include <ArduinoJson.h>
 #include <PubSubClient.h>
 #include <WiFiClientSecure.h>  
 
@@ -16,8 +15,8 @@
 #define ledPin6 D6
 #define buzzerPin D7
 
-const char* ssid = "GARDEN";
-const char* password = "9842201111@gard";
+const char* ssid = "Anirudh";
+const char* password = "Lagoonnebula,1610";
 
 const char* mqtt_server = "d55860b1ebb94d229518a106cad61eb9.s1.eu.hivemq.cloud";
 const char* mqtt_username = "GardenRestaurant";
@@ -118,11 +117,7 @@ void setup() {
   while (!Serial) delay(1);
   setup_wifi();
 
-  #ifdef ESP8266
-    espClientkitchen.setInsecure();
-  #else
-    espClientkitchen.setCACert(root_ca);      // enable this line and the the "certificate" code for secure connection
-  #endif
+  espClientkitchen.setInsecure();
 
   client.setServer(mqtt_server, mqtt_port);
   client.setCallback(callback);
