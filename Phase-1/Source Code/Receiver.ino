@@ -9,15 +9,15 @@
 #define ledPin6 D6
 #define buzzerPin D7
 
-const char* ssid = "Enter WiFi ssid";
-const char* password = "Enter WiFi password";
+const char* ssid = "GARDEN";
+const char* password = "9842201111@gard";
 
 const char* mqttServer = "broker.hivemq.com";
 const int mqttPort = 1883;
 const char* topic = "hut";
 
-WiFiClient espClient;
-PubSubClient client(espClient);
+WiFiClient espClientkit1; //Change number for kitchen 2
+PubSubClient client(espClientkit1); //Change number for kitchen 2
 
 void setup() 
 {
@@ -93,57 +93,58 @@ void callback(char* topic, byte* payload, size_t length)
 
     Serial.println(message);
 
-    if (message == "o1") 
+    int callmsg = message.indexOf('o');
+    if (callmsg == 0 && callmsg != -1)
+    { 
+        Serial.println("Call messages");
+        buzz();
+    }
+
+    if (message == "o7") 
     {
         digitalWrite(ledPin1, HIGH);
-        buzz();
     } 
-   else if (message == "o2") 
+   else if (message == "o8") 
     {
         digitalWrite(ledPin2, HIGH);
-        buzz();
     } 
-   else if (message == "o3") 
+   else if (message == "o9") 
     {
         digitalWrite(ledPin3, HIGH);
-        buzz();
     } 
-   else if (message == "o4") 
+   else if (message == "o10") 
     {
         digitalWrite(ledPin4, HIGH);
-        buzz();
     } 
-   else if (message == "o5") 
+   else if (message == "o11") 
     {
         digitalWrite(ledPin5, HIGH);
-        buzz();
     } 
-   else if (message == "o6") 
+   else if (message == "o12") 
     {
         digitalWrite(ledPin6, HIGH);
-        buzz();
     } 
-   else if (message == "f1") 
+   else if (message == "f7") 
     {
         digitalWrite(ledPin1, LOW);
     } 
-    else if (message == "f2") 
+    else if (message == "f8") 
     {
         digitalWrite(ledPin2, LOW);
     }
-   else if (message == "f3") 
+   else if (message == "f9") 
     {
         digitalWrite(ledPin3, LOW);
-    } 
-   else if (message == "f4") 
+    }
+   else if (message == "f10") 
     {
         digitalWrite(ledPin4, LOW);
     }
-    else if (message == "f5") 
+    else if (message == "f11") 
     {
         digitalWrite(ledPin5, LOW);
     }
-    else if (message == "f6") 
+    else if (message == "f12") 
     {
         digitalWrite(ledPin6, LOW);
     }
@@ -154,7 +155,6 @@ void buzz()
 {
     int melody[] = {150, 250, 500, 550, 0, 550, 500, 250, 150};//262, 294, 330, 349, 392, 440, 494, 523
     int noteDuration = 200;
-
     for (int i = 0; i < 9; i++) 
     {
         tone(buzzerPin, melody[i], noteDuration);
