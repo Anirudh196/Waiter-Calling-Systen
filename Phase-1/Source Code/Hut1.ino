@@ -2,21 +2,21 @@
 #include <ESP8266WiFi.h>
 #include <PubSubClient.h>     
 
-#define switchPin1 D4
-#define switchPin2 D6
+#define switchPin1 D6
+#define switchPin2 D7
 
-const char* ssid = "Enter WiFi ssid";
-const char* password = "Enter WiFi password";
+const char* ssid = "GARDEN";
+const char* password = "9842201111@gard";
 
 const char* mqtt_server = "broker.hivemq.com"; 
 const int mqtt_port = 1883; 
 const char* mqtt_topic = "hut";
 
 const char* messageSwitchPin1 = "o1"; 
-const char* messageSwitchPin2 = "f1"; 
+const char* messageSwitchPin2 = "f11"; 
 
-WiFiClient espClient;
-PubSubClient client(espClient); 
+WiFiClient espClient1;
+PubSubClient client(espClient1); 
 
 void setup_wifi() 
 { 
