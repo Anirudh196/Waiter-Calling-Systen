@@ -93,13 +93,6 @@ void callback(char* topic, byte* payload, size_t length)
 
     Serial.println(message);
 
-    int callmsg = message.indexOf('o');
-    if (callmsg == 0 && callmsg != -1)
-    { 
-        Serial.println("Call messages");
-        buzz();
-    }
-
     if (message == "o7") 
     {
         digitalWrite(ledPin1, HIGH);
@@ -147,6 +140,13 @@ void callback(char* topic, byte* payload, size_t length)
     else if (message == "f12") 
     {
         digitalWrite(ledPin6, LOW);
+    }
+
+        int callmsg = message.indexOf('o');
+    if (callmsg == 0 && callmsg != -1)
+    { 
+        Serial.println("Call messages");
+        buzz();
     }
     
 }
